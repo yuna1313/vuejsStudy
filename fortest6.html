@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Vue.js sample</title>
+        <link rel="stylesheet" href="css/style.css">
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <h2>버튼을 클릭하면 sort하는 예제</h2>
+            <ul>
+                <li v-for="item in myArray">{{ item }}</li>
+            </ul>
+            <button v-on:click="sortData(myArray)">sort</button><br>
+        </div>
+
+        <script>
+            new Vue({
+                el: '#app',
+                data: {
+                    myArray: ['one', 'two', 'three', 'four', 'five']
+                },
+                methods: {
+                    sortData: function(listdata) {
+                        listdata.sort(function(a, b) {
+                            return (a < b ? -1 : 1);
+                        })
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>

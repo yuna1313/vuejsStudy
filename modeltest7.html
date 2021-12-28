@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Vue.js sample</title>
+        <link rel="stylesheet" href="css/style.css">
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <h2>선택한 라디오 버튼을 표시하는 예제</h2>
+            <label><input type="radio" value="img/face1.jpg" v-model="fileName">face1</label><br>
+            <label><input type="radio" value="img/face2.jpg" v-model="fileName">face2</label><br>
+           <p>{{ fileName }} 이 선택되었습니다.</p>
+           <img v-bind:src="fileName"></img>
+        </div>
+
+        <script>
+            new Vue({
+                el: '#app',
+                data: {
+                    fileName: ''
+                }
+            })
+        </script>
+    </body>
+</html>

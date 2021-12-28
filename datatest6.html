@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Vue.js sample</title>
+        <link rel="stylesheet" href="css/style.css">
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <h2>오브젝트 데이터의 내부를 확인하는 예제</h2>
+            {{ $data }}
+            <hr>
+            <li v-for="(item, key) in $data">{{ key }} : {{ item }}</li>
+        </div>
+
+        <script>
+            new Vue({
+                el: '#app',
+                data: {
+                   myText: 'Hello!',
+                   myNumber: 12345,
+                   myBool: true,
+                   myArray: [1,2,3,4,5]
+                }
+            })
+        </script>
+    </body>
+</html>

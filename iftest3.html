@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Vue.js sample</title>
+        <link rel="stylesheet" href="css/style.css">
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <h2>클릭하면 "좋아"버튼을 삭제하는 예제</h2>
+            <button v-if="isShow" v-on:click="good">좋아</button>
+        </div>
+
+        <script>
+            new Vue({
+                el: '#app',
+                data: {
+                    isShow: true
+                },
+                methods: {
+                    good: function() {
+                        this.isShow = false
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>

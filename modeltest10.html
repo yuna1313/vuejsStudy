@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Vue.js sample</title>
+        <link rel="stylesheet" href="css/style.css">
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <h2>다 쓴 후 입력 예제</h2>
+            <input v-model.lazy="myText">
+            <p>입력 후 표시 「{{ myText }}」 입니다.</p>
+        </div>
+
+        <script>
+            new Vue({
+                el: '#app',
+                data: {
+                    myText: ''
+                }
+            })
+        </script>
+    </body>
+</html>
