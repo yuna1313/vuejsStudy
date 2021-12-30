@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Vue.js sample</title>
+        <link rel="stylesheet" href="css/style.css">
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <h2>입력 문자를 감지하여 금지 문자가 입력되면 alert을 띄우는 예제</h2>
+            <p>앞으로 {{ restSec }}초</p>
+            <button v-on:click="startTimer">START</button>
+        </div>
+
+        <script>
+            new Vue({
+                el: '#app',
+                data: {
+                    restSec: 5,
+                    timerObj: null
+                },
+                methods: {
+                    startTimer: function() {
+                        // 남은 시간 5초
+                        this.restSec = 5;
+                        // 타이머를 start, 1초에 1씩 감소
+                        this.timerObj = setInterval(() => { this.restSec-- }, 1000);
+                    }
+                },
+                watch: {
+                    // 남은 초를 감지한다.
+                    restSec: function() {
+                        // 0초 이하가 되면 alert을 띄우고 타이머를 멈춘다.
+                        if(this.restSec <= 0) {
+                            alert('제한 시간입니다.');
+                            clearInterval(this.timerObj);
+                        }
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>

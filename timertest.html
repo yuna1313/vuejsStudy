@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Vue.js sample</title>
+        <link rel="stylesheet" href="css/style.css">
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <h2>남은 시간이 0초가 되면 alert을 띄우는 예제</h2>
+            <button onclick="startTimer()">START</button>
+        </div>
+
+        <script>
+            function startTimer() {
+                // 남은 시간 5초
+                this.restSec = 5;
+                // 타이머 시작, 1초(1000밀리초)에 한 번씩 countDown()을 실행
+                this.timerObj = setInterval(() => { countDown() }, 1000)
+            }
+            function countDown() {
+                // 1초 감소
+                this.restSec--;
+                //0초 이하가 되면 alert을 띄우고 타이머를 중지
+                if(this.restSec <= 0) {
+                    alert("제한 시간입니다.");
+                    clearInterval(this.timerObj);
+                }    
+            }
+        </script>
+    </body>
+</html>
