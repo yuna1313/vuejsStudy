@@ -27,7 +27,7 @@
                     limitTime: 0,
                     isWritable: true,
                     isResult: false,
-                    inputText: "",
+                    inputText: '',
                     forbiddenCnt: 0
                 },
                 methods: {
@@ -38,32 +38,33 @@
                         this.isResult = false;
                     }
                 },
+                computed: {
+                    resultScore: function() {
+                        return this.forbiddenCnt * 12;
+                    }
+                },
                 watch: {
-                    inputText: function() {
-                        var arrForbiddenText = this.forbiddenText.split(",");
-                        for(var i=0;i<arrForbiddenText.length;i++) {
-                            var pos = this.inputText.indexOf(arrForbiddenText[i]);
-                            if(pos >= 0) {
-                                alert(this.forbiddenText + "는 입력할 수 없습니다.");
-                                this.inputText = this.inputText.substr(0, pos);
-                                this.limitTime = this.limitTime + 10;
-                                this.forbiddenCnt++;
-                            }
-                        }
-                    },
                     limitTime: function() {
                         if(this.limitTime <= 0) {
-                            alert('제한시간입니다.')
+                            alert('제한시간입니다.');
                             clearInterval(this.timerObj);
                             this.isWritable = true;
                             this.isResult = true;
                             this.wordCnt = this.inputText.length;
                         }
-                    }
-                },
-                computed: {
-                    resultScore: function() {
-                        return this.forbiddenCnt * 12;
+                    },
+                    inputText: function() {
+                        var arrForbiddenText = this.forbiddenText.split(",");
+                        for(var i=0;i<arrForbiddenText.length;i++) {
+                            var pos = this.inputText.indexOf(arrForbiddenText[i]);
+                            if (pos >= 0) {
+                                alert(this.forbiddenText + "는 입력할 수 없습니다.");
+                                // 입력 문자에서 금지 문자를 삭제한다.
+                                this.inputText = this.inputText.substr(0, pos);
+                                this.limitTime = this.limitTime + 10;
+                                this.forbiddenCnt++;
+                            }
+                        }
                     }
                 }
             })
